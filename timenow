@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>현재 시각</title>
+    <style>
+    body {
+      font-family: "Arial Rounded MT", Arial, sans-serif;
+      text-align: center;
+      background-color: #000000;
+    }
+
+    h1 {
+      font-size: 60px;
+      color: #FFFFFF;
+      margin-top: 170px;
+      padding: 10px 0;
+    }
+
+    #current-time {
+      font-size: 185px;
+      color: #FFFFFF;
+  </style>
+  <script>
+    function displayCurrentTime() {
+        var now = new Date();
+        var hour = now.getHours();
+        var minute = now.getMinutes();
+        var second = now.getSeconds();
+        var ampm = hour >= 12 ? "PM" : "AM";
+        hour = hour % 12;
+        hour = hour ? hour : 12; // 0 시간을 12로 변경
+        hour = hour < 10 ? "0" + hour : hour; // 한 자리 숫자일 경우 0을 붙여 두 자리로 변경
+        minute = minute < 10 ? "0" + minute : minute; // 한 자리 숫자일 경우 0을 붙여 두 자리로 변경
+        second = second < 10 ? "0" + second : second; // 한 자리 숫자일 경우 0을 붙여 두 자리로 변경
+        var currentTime = ampm + " " + hour + ":" + minute + ":" + second;
+        document.getElementById("current-time").innerHTML = currentTime;
+    }
+
+    // 초마다 현재 시간 갱신
+    setInterval(function() {
+        displayCurrentTime();
+    }, 1000);
+  </script>
+</head>
+<body>
+    <h1>현재 시각</h1>
+    <div id="current-time"></div>
+</body>
+</html>
+
